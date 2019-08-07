@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.teste.componentes.R
 import com.teste.componentes.mock.Mock
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener,
+    SeekBar.OnSeekBarChangeListener {
 
     private lateinit var progress: ProgressDialog
 
@@ -83,16 +81,43 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 progress.setMessage("Mensagem")
                 progress.show()
             }
+            R.id.buttonGetSeekBar -> {
+                val value = seekBar.progress.toString()
+                Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
+            }
+            R.id.buttonSetSeekBar -> {
+                seekBar.progress = 10
+            }
         }
     }
 
+    // Eventos Spinner
     override fun onNothingSelected(parent: AdapterView<*>?) {
     }
-
-    override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-        val value: String = parent.getItemAtPosition(position).toString()
-        Toast.makeText(this, value, Toast.LENGTH_LONG).show()
+    override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        val id = view.id
+        when (id) {
+            R.id.spinnerDynamic -> {
+                val value: String = parent.getItemAtPosition(position).toString()
+                Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
+    // Eventos SeekBar
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        val id = seekBar.id
+        when (id) {
+            R.id.seekBar -> {
+                textSeekBar.text = progress.toString()
+            }
+        }
+    }
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+    }
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+    }
+
 
     private fun setListeners() {
         buttonToastMe.setOnClickListener(this)
@@ -100,8 +125,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         buttonGetSpinner.setOnClickListener(this)
         buttonSetSpinner.setOnClickListener(this)
         buttonProgressDialog.setOnClickListener(this)
+        buttonGetSeekBar.setOnClickListener(this)
+        buttonSetSeekBar.setOnClickListener(this)
 
         spinnerDynamic.onItemSelectedListener = this
+
+        seekBar.setOnSeekBarChangeListener(this)
     }
 
     private fun loadSpinner() {
