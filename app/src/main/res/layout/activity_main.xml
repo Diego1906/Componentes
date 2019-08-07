@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dip_5"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <Button
         android:id="@+id/buttonToastMe"
@@ -69,5 +69,15 @@
             android:text="@string/set_spinner" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonProgressDialog"
+        android:layout_width="@dimen/dip_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dip_16"
+        android:text="@string/progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutSpinner" />
 
 </android.support.constraint.ConstraintLayout>

@@ -4,6 +4,7 @@
     <string name="snack_me">Snack Me</string>
     <string name="set_spinner">Set Spinner</string>
     <string name="get_spinner">Get Spinner</string>
+    <string name="progress">Progress</string>
 
     <string-array name="weigth_array">
         <item>Gramas</item>

@@ -1,6 +1,6 @@
-package com.teste.componentes
+package com.teste.componentes.view
 
-import android.graphics.Color
+import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -10,10 +10,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.teste.componentes.R
 import com.teste.componentes.mock.Mock
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private lateinit var progress: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         setListeners()
 
         loadSpinner()
+
+        progress = ProgressDialog(this)
     }
 
     override fun onClick(view: View) {
@@ -73,6 +78,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
             R.id.buttonSetSpinner -> {
                 spinnerDynamic.setSelection(3)
             }
+            R.id.buttonProgressDialog -> {
+                progress.setTitle("Título")
+                progress.setMessage("Mensagem")
+                progress.show()
+            }
         }
     }
 
@@ -89,6 +99,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         buttonSnackMe.setOnClickListener(this)
         buttonGetSpinner.setOnClickListener(this)
         buttonSetSpinner.setOnClickListener(this)
+        buttonProgressDialog.setOnClickListener(this)
 
         spinnerDynamic.onItemSelectedListener = this
     }
