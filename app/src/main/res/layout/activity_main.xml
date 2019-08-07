@@ -26,4 +26,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonToastMe" />
 
+    <Spinner
+        android:id="@+id/spinnerStatic"
+        android:layout_width="@dimen/dip_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dip_16"
+        android:entries="@array/weigth_array"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonSnackMe" />
+
+    <Spinner
+        android:id="@+id/spinnerDynamic"
+        android:layout_width="@dimen/dip_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dip_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerStatic" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSpinner"
+        android:layout_width="@dimen/dip_0"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerDynamic">
+
+        <Button
+            android:id="@+id/buttonGetSpinner"
+            android:layout_width="@dimen/dip_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/get_spinner" />
+
+        <Button
+            android:id="@+id/buttonSetSpinner"
+            android:layout_width="@dimen/dip_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/set_spinner" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

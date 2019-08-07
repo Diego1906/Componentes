@@ -6,17 +6,22 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import com.teste.componentes.mock.Mock
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setListeners()
+
+        loadSpinner()
     }
 
     override fun onClick(view: View) {
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 // Cor do texto
                 snackbar.view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
-                    .setTextColor(ContextCompat.getColor(this,  R.color.colorOrange))
+                    .setTextColor(ContextCompat.getColor(this, R.color.colorOrange))
 
                 // Cor do background
                 //snackbar.view.setBackgroundColor(Color.BLUE)
@@ -60,11 +65,39 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 snackbar.show()
             }
+            R.id.buttonGetSpinner -> {
+                // val value = spinnerDynamic.selectedItem.toString()
+                val value = spinnerDynamic.selectedItemPosition.toString()
+                Toast.makeText(this, value, Toast.LENGTH_LONG).show()
+            }
+            R.id.buttonSetSpinner -> {
+                spinnerDynamic.setSelection(3)
+            }
         }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+        val value: String = parent.getItemAtPosition(position).toString()
+        Toast.makeText(this, value, Toast.LENGTH_LONG).show()
     }
 
     private fun setListeners() {
         buttonToastMe.setOnClickListener(this)
         buttonSnackMe.setOnClickListener(this)
+        buttonGetSpinner.setOnClickListener(this)
+        buttonSetSpinner.setOnClickListener(this)
+
+        spinnerDynamic.onItemSelectedListener = this
+    }
+
+    private fun loadSpinner() {
+        val list = Mock.getList()
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
+
+        spinnerDynamic.adapter = adapter
     }
 }

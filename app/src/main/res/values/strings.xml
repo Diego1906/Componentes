@@ -2,4 +2,13 @@
     <string name="app_name">Componentes</string>
     <string name="toast_me">Toast me</string>
     <string name="snack_me">Snack Me</string>
+    <string name="set_spinner">Set Spinner</string>
+    <string name="get_spinner">Get Spinner</string>
+
+    <string-array name="weigth_array">
+        <item>Gramas</item>
+        <item>Kg</item>
+        <item>Arroba</item>
+        <item>Toneladas</item>
+    </string-array>
 </resources>
