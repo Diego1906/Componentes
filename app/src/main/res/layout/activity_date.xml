@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/dip_5"
     tools:context=".view.DateActivity">
 
     <Button
@@ -20,9 +21,43 @@
         android:id="@+id/textDataPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dip_5"
         android:text="Data Atual"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonDatePicker" />
 
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dip_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDataPicker" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTimePicker"
+        android:layout_width="@dimen/dip_0"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timePicker">
+
+        <Button
+            android:id="@+id/buttonGetTimePicker"
+            android:layout_width="@dimen/dip_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Get TimePicker" />
+
+        <Button
+            android:id="@+id/buttonSetTimePicker"
+            android:layout_width="@dimen/dip_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Set TimePicker" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
